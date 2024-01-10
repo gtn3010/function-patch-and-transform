@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"google.golang.org/protobuf/types/known/structpb"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
@@ -198,6 +199,7 @@ func (f *Function) RunFunction(ctx context.Context, req *fnv1beta1.RunFunctionRe
 			log.Info("Cannot render patches for composed resource", "warning", err)
 			warnings++
 		}
+		fmt.Println(store)
 
 		if store {
 			// Add or replace our desired resource.
